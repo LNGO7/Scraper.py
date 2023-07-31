@@ -40,15 +40,19 @@ link_elements = driver.find_elements(By.XPATH, '//a[contains(@href, "/index")]')
 
 # List to store the UČO numbers
 uco_list = []
-
+import time
 # Iterate over the link elements and click on each link
 for link_element in link_elements:
     link_url = link_element.get_attribute("href")
     driver.get(link_url)
     
-    # Find the UČO element
-    uco_element = driver.find_element(By.CSS_SELECTOR, "//#phome1 > tbody:nth-child(1) > tr:nth-child(10) > td:nth-child(2)")
+    time.sleep(2)
 
+    page = driver.page_source
+    print(page.index("UČO"))
+    
+    # Find the UČO element
+    uco_element = driver.find_element(By.XPATH, '//tr[td[text()="UČO"]]/td[@class="left-align"]')
     
     # Get the UČO number
     uco = uco_element.text.strip()

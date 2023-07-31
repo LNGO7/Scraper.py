@@ -46,6 +46,7 @@ Fakulta_FVZ = nazev_3[0].find_element(By.TAG_NAME, "th").text
 nazev_4= driver.find_elements(By.CSS_SELECTOR, "table.stripped:nth-child(9) > tbody:nth-child(1) > tr:nth-child(1)")
 Ustavy_a_Centra = nazev_4[0].find_element(By.TAG_NAME, "th").text
 
+
 ###################################-FUNKCE-########################################### 
 
 def ZadejKatedru(i):
@@ -59,24 +60,6 @@ def ZadejCentrum(i):
     while cislo not in range(1, i):
         cislo = int(input("Zadej pořadové číslo pracoviště: "))
     return cislo
-
-"""
-def StahniData(odkaz, radky, numbers, ulozeni):
-    # Prazdny list pro temp. ulozeni dat
-    data = []
-    # Extrakce dat
-    for radek in radky:
-        sloupce = radek.find_elements(By.XPATH, './/td')
-        if sloupce:
-            hodnost = sloupce[0].text
-            jmeno = sloupce[1].text
-            telefony = sloupce[2].text
-            id = sloupce[1].link
-            data.append({'Hodnost/Tituly': hodnost, 
-                         'Jmeno': jmeno, 
-                         'Telefony': telefony,
-                         'ID': numbers})
-"""
 
 def StahniData(odkaz, radky, numbers, ulozeni):
     # Prazdny list pro temp. ulozeni dat
@@ -221,7 +204,6 @@ elif cislo == "2":
 
 
 
-
     elif cislo_katedry == 8:
         # Katedra informatiky a kybernetických operací  
         # Removed the driver.get() call and assigned the URL to 'odkaz' directly
@@ -246,8 +228,6 @@ elif cislo == "2":
                 numbers.append(number)
         
         StahniData(odkaz, radek, numbers, ulozeni="K209.json")
-
-
 
 
 
